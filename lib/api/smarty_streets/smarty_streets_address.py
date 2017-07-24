@@ -13,10 +13,10 @@ def run():
     # Uncomment the line above to try it with a proxy instead
 
     lookup = Lookup()
-    lookup.street = "73 St Pauls Place"
-    lookup.city = "Brooklyn"
-    lookup.state = "NY"
-    lookup.zipcode = "11226"
+    lookup.street = "40 West Park Place"
+    lookup.city = "Morristown"
+    lookup.state = "NJ"
+    lookup.zipcode = "07960"
 
     try:
         client.send_lookup(lookup)
