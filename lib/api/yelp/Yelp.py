@@ -67,7 +67,7 @@ class Yelp(object):
     def __search_businesses(self, name, location=None, lat_long=None):
         url = self.__BASE_URL + '/v3/businesses/search'
 
-        headers = self.__headers #{'Authorization': 'bearer %s' % self.__ACCESS_TOKEN}
+        headers = self.__headers
 
         if (location is None):
             params = {
@@ -85,7 +85,6 @@ class Yelp(object):
         url += '?' + urllib.parse.urlencode(params)
         request = requests.get(url=url, headers=headers)
 
-        #import pdb; pdb.set_trace()
         if request.status_code != 200:
             raise RuntimeError(
                 'the following request returned a status code of "{}" = "{}"'
