@@ -18,3 +18,13 @@ class Businesses(models.Model):
     latitude = models.FloatField(max_length=25, null=True)
     longitude = models.FloatField(max_length=25, null=True)
     phone = models.CharField(max_length=14, null=True)
+
+    def __str__(self):
+        return self.businesses_text
+
+
+    def has_high_yelp_rating(self):
+        if self.yelp_rating >= 4.0:
+            return True
+        else:
+            return False

@@ -1,0 +1,2 @@
+<form action="/galil/" method="post"> <label for="your_name">Your name: </label>
+                      <input id="your_name" type="text" value="{{ current_name }}"> <input type="submit" value="Ok"></form>%}
