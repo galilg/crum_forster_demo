@@ -50,7 +50,8 @@ class Yelp(object):
 
     def __load_access_token(self):
         try:
-            with open('access_token', 'r') as file:
+            directory = os.getcwd()
+            with open(directory +'/yelp/access_token', 'r') as file:
                 date = file.readline().rstrip('\n')
                 token_expiration = datetime.datetime.strptime(date,
                                                             '%Y-%m-%d %H:%M:%S')
