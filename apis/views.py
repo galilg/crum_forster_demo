@@ -10,6 +10,7 @@ from .api.yelp import test_yelp, Yelp
 from .models import Businesses
 
 import pprint
+import re
 # ----- Main ------------------------------------------------------------------
 
 def index(request):
@@ -19,15 +20,24 @@ def index(request):
 
 def submit_business_name(request):
     if (request.method == 'POST'):
-        print("ITS A POST!!!!")
         input_text = request.POST['business_name']
         print("its a business", input_text)
     return HttpResponse('submit')
 
 
 def submit_phone(request):
-    input_text = int(request.POST['phone'])
-    print("THis is the phone:", input_text)
+    input_text = request.POST['phone']
+
+    # Remove any non numeric characteres from phone number and
+    # strip the leading 1 if it exists.
+    input_text = re.sub(r'[^0-9]+', '', input_text).lstrip('1')
+
+    if(len(input_text) < 10 or len(input_text) > 10):
+        message = "This doesn't appear to be a valid US number"
+        return render(request, 'apis/phone_search.html', {'num_form':NumberForm,
+                                                             'message':message})
+
+    input_text = int(input_text)
     lookup = Yelp.Yelp()
     info = lookup.search_phone(input_text)
     pprint.pprint(info)
@@ -59,8 +69,6 @@ def submit_phone(request):
 
     return render(request, 'apis/phone_search.html', {'num_form': NumberForm,
                                                       'message': message})
-    #return HttpResponse('submit')
-
 
 def yelp_search(request, search_type):
     #thing = test_yelp.get_test()
