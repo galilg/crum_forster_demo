@@ -107,7 +107,7 @@ class Yelp(object):
         url = self.__BASE_URL + '/v3/businesses/search/phone'
         headers = self.__headers
         params = {
-            'phone': '+1' + phone
+            'phone': '+1' + str(phone)
         }
         url += '?' + urllib.parse.urlencode(params)
         request = requests.get(url=url, headers=headers)

@@ -6,4 +6,4 @@ class NameForm(forms.Form):
     state = forms.CharField(label='State', max_length=2)
 
 class NumberForm(forms.Form):
-    phone = forms.IntegerField(label='Phone')
+    phone = forms.CharField(label='Phone', max_length=10)
