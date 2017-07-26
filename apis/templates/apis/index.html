@@ -9,7 +9,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header"style="background-color:white;color:white;padding:50px;width:100%">
+      <a class="navbar-brand" href="http://www.cfins.com"><img alt="Brand" src="http://www.cfins.com/wp-content/themes/cf/images/logo_cf.png"></a>
+    </div>
+  </div>
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -19,30 +25,43 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Crum_& Forster API Demo</a>
+      <a class="navbar-brand" href="#">API Access Demonstration</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">API Access<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="yelp_search">Yelp API</a></li>
+            <li><a href="#">Google API</a></li>
+            <li><a href="#">Smarty Streets</a></li>
+            <li><a href="#">Pipeline</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="Diagnostics">Diagnostics</a></li>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="http://www.cfins.com"><img alt="Brand" src="http://www.cfins.com/wp-content/themes/cf/images/logo_cf.png"></a>
-    </div>
+<div class="jumbotron" style="padding:1cm">
+  <h2>An Interface for Yelp, Google, Smarty Streets with a SQL Database</h2>
 
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Google API</a>
+  <a class="btn btn-primary btn-lg" href="yelp_search" role="button">Yelp API</a>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Smarty Streets API</a></p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Pipeline</a>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Diagnostics</a></p>
+</div>
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container">
+    <div class=navbar-right>
+    <h2>Galil Gertner</h2>
+    </div>
   </div>
+</nav>
