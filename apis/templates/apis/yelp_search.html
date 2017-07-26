@@ -40,8 +40,28 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<form action='/apis/submit_business_name' method='post' class='form'>
+    {% csrf_token %}
+    <div class="col-lg-4">
+    {% bootstrap_form name_form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        {% bootstrap_icon "star" %} Submit
+      </button>
+    {% endbuttons %}
+</form>
 
 
+<form action='/apis/submit_phone' method='post' class='form'>
+    {% csrf_token %}
+    <div class="col-lg-4">
+    {% bootstrap_form num_form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        {% bootstrap_icon "star" %} Submit
+      </button>
+    {% endbuttons %}
+</form>
 
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">

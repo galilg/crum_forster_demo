@@ -5,5 +5,5 @@ class NameForm(forms.Form):
     city = forms.CharField(label='City', max_length=35)
     state = forms.CharField(label='State', max_length=2)
 
-class NumberFrom(forms.Form):
+class NumberForm(forms.Form):
     phone = forms.IntegerField(label='Phone')
