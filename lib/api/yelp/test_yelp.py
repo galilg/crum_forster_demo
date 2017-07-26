@@ -5,9 +5,12 @@ import pprint
 
 # ----- Main ------------------------------------------------------------------
 
-yelp = Yelp()
+def get_test(phone):
 
-coord = [40.79654, -74.48156]
-#response = yelp.search_lat_long('Urban Table', coord)
-response = yelp.search_phone('2124882626')
-pprint.pprint(response)
+    yelp = Yelp()
+
+    coord = [40.79654, -74.48156]
+    #response = yelp.search_lat_long('Urban Table', coord)
+    response = yelp.search_phone(phone)
+    return response
+    pprint.pprint(response)

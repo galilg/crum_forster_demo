@@ -40,29 +40,23 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<form action='/apis/submit_business_name' method='post' class='form'>
-    {% csrf_token %}
-    <div class="col-lg-4">
-    {% bootstrap_form name_form %}
-    {% buttons %}
-      <button type="submit" class="btn btn-primary">
-        {% bootstrap_icon "star" %} Submit
-      </button>
-    {% endbuttons %}
-</form>
+
+<div class="page-header" style="padding:.2cm">
+  <img src="https://s3-media2.fl.yelpcdn.com/assets/srv0/styleguide/1ea40efd80f5/assets/img/brand_guidelines/yelp_fullcolor.png">
+</div>
 
 
-<form action='/apis/submit_phone' method='post' class='form'>
-    {% csrf_token %}
-    <div class="col-lg-4">
-    {% bootstrap_form num_form %}
-    {% buttons %}
-      <button type="submit" class="btn btn-primary">
-        {% bootstrap_icon "star" %} Submit
-      </button>
-    {% endbuttons %}
-</form>
-
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <a class="btn btn-default" href="location" role="button">Search by City, State</a>
+  </div>
+  <div class="btn-group" role="group">
+    <a class="btn btn-default" href="lat_long" role="button">Search by Latitude, Longitude</a>
+  </div>
+  <div class="btn-group" role="group">
+    <a class="btn btn-default" href="phone" role="button">Search by Phone Number</a>
+  </div>
+</div>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container">

@@ -9,7 +9,7 @@ class Businesses(models.Model):
     street = models.CharField(max_length=200, null=False)
     city = models.CharField(max_length=45, null=False)
     state = models.CharField(max_length=2, null=False)
-    zip_code = models.IntegerField(null=False)
+    zip_code = models.CharField(max_length=11, null=False)
     google_place_id = models.CharField(max_length=100, null=True)
     yelp_id = models.CharField(max_length=45, null=True)
     yelp_rating = models.FloatField(max_length=4, null=True)
@@ -20,7 +20,7 @@ class Businesses(models.Model):
     phone = models.CharField(max_length=14, null=True)
 
     def __str__(self):
-        return self.businesses_text
+        return self.name
 
 
     def has_high_yelp_rating(self):

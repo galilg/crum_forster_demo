@@ -9,12 +9,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header"style="background-color:white;color:white;padding:50px;width:100%">
-      <a class="navbar-brand" href="http://www.cfins.com"><img alt="Brand" src="http://www.cfins.com/wp-content/themes/cf/images/logo_cf.png"></a>
-    </div>
-  </div>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">API Access Demonstration</a>
+      <a class="navbar-brand" href="/">Crum & Forster API Demo</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -34,33 +28,31 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">API Access<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="yelp_search">Yelp API</a></li>
-            <li><a href="#">Google API</a></li>
-            <li><a href="#">Smarty Streets</a></li>
+            <li><a href="yelp_search">Google API</a></li>
+            <li><a href="#">Smarty Streets API</a></li>
             <li><a href="#">Pipeline</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="Diagnostics">Diagnostics</a></li>
-            <li><a href="sql">SQL Database</a></li>
-            <li><a href="admin">Admin</a></li>
+            <li><a href="#">Diagnostics</a></li>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="jumbotron" style="padding:1cm">
-  <h2>An Interface for Yelp, Google, and Smarty Streets with a SQL Database</h2>
-
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Google API</a>
-  <a class="btn btn-primary btn-lg" href="yelp_search" role="button">Yelp API</a>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Smarty Streets API</a>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Pipeline APIS</a></p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">API Diagnostics</a>
-  <a class="btn btn-primary btn-lg" href="#" role="button">View SQL Database</a></p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Admin</a></p>
-</div>
 
 
+<form action='/apis/submit_phone' method='post' class='form'>
+    {% csrf_token %}
+    <div class="col-lg-4">
+    {% bootstrap_form lat_long_form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        {% bootstrap_icon "star" %} Submit
+      </button>
+    {% endbuttons %}
+</form>
+
+<a class="btn btn-success" href="../yelp_search" role="button">Back to Search</a>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container">
