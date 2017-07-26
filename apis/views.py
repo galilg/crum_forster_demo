@@ -3,7 +3,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from .forms import NameForm, NumberForm, LatLongForm
+from .forms import NameForm, NumberForm, LatLongForm, AddressForm
 
 from .api.yelp import test_yelp, Yelp
 from .api.smarty_streets import SmartyStreets
@@ -17,6 +17,47 @@ import re
 def index(request):
     return render(request, 'apis/index.html')
     return HttpResponse('Hello there, world.')
+
+
+def smarty_search(request):
+    return render(request, 'apis/smartysearch.html', {'address_form':AddressForm})
+
+def submit_smarty_search(request):
+    if (request.method ==  'POST'):
+        address = request.POST['street'].strip(' ')
+        city = request.POST['city'].strip(' ')
+        state = request.POST['state'].strip(' ')
+        zip_code = request.POST['zip_code']
+        location_smartystreets = {'street':address,
+                                   'city':city,
+                                   'state':state,
+                                   'zipcode':zip_code}
+
+        smarty_streets = SmartyStreets.SmartyStreets()
+
+        info = smarty_streets.check_address(location_smartystreets)
+
+        address_info = {'delivery_line_1': info.delivery_line_1,
+                        'primary_number': info.components.primary_number,
+                        'street_name': info.components.street_name,
+                        'street_suffix':info.components.street_suffix,
+                        'city_name':info.components.city_name,
+                        'state_abbreviation':info.components.state_abbreviation,
+                        'zipcode':info.components.zipcode,
+                        'plus4_code':info.components.plus4_code}
+        try:
+            address_info['street_predirectional'] = info.components.street_predirectional
+        except:
+            pass
+        try:
+            address_info['street_postdirectional'] = info.components.street_postdirectional
+        except:
+            pass
+
+    #else:
+    #    address_info = {}
+    return render(request, 'apis/smartysearch.html', {'address_form':AddressForm,
+                                                      'address_info':address_info})
 
 
 def submit_business_name(request):
