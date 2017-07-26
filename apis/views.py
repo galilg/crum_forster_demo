@@ -6,6 +6,7 @@ from django.shortcuts import render
 from .forms import NameForm, NumberForm, LatLongForm
 
 from .api.yelp import test_yelp, Yelp
+from .api.smarty_streets import SmartyStreets
 
 from .models import Businesses
 
@@ -20,8 +21,43 @@ def index(request):
 
 def submit_business_name(request):
     if (request.method == 'POST'):
-        input_text = request.POST['business_name']
-        print("its a business", input_text)
+        name = request.POST['business_name'].strip(' ')
+        address = request.POST['street'].strip(' ')
+        city = request.POST['city'].strip(' ')
+        state = request.POST['state'].strip(' ')
+        zip_code = request.POST['zip_code']
+        if (len(state) > 2):
+            message = "Please enter standard state abbreviation."
+            return render(request, 'apis/location_search.html', {'name_form':NameForm,
+                                                                 'message':message})
+        location_for_yelp =  city + ', ' + state.upper()
+        lookup = Yelp.Yelp()
+        info = lookup.search_location(name, location_for_yelp)
+
+        location_smartystreets = {'street':address,
+                                      'city':city,
+                                      'state':state,
+                                      'zipcode':zip_code}
+
+        smarty_streets = SmartyStreets.SmartyStreets()
+        smarty_streets_info = smarty_streets.check_address(location_smartystreets)
+
+        ss_street_address = smarty_streets_info.delivery_line_1
+        print(ss_street_address)
+
+        if (len(info['businesses']) > 0 and len(info['businesses']) > 2):
+            for i in range(0,2):
+                yelp_street_address = info['businesses'][i]['location']['address1']
+                yelp_location = {'street':yelp_street_address,
+                                 'city':city,
+                                 'state':state,
+                                 'zipcode':zip_code}
+                yelp_converted_address = smarty_streets.check_address(yelp_location)
+                yelp_street_converted = yelp_converted_address.delivery_line_1
+                if(yelp_street_converted == ss_street_address):
+                    print('Woohoo we have a match!!')
+                    print('Biz id is', info['businesses'][i]['id'])
+
     return HttpResponse('submit')
 
 
@@ -61,14 +97,17 @@ def submit_phone(request):
                            yelp_id=info['businesses'][0]['id'],
                            defaults=business,)
         if(created):
-            message = "Success, the business has been added to the database."
+            message = "Success, this business has been added to the database."
+            business_name = entry
         else:
             message = "The yelp id already exists in the database. If any data has changed, it's been updated."
+            business_name = entry
     else:
         message = "This number doesn't have any yelp reviews, it was not added."
 
     return render(request, 'apis/phone_search.html', {'num_form': NumberForm,
-                                                      'message': message})
+                                                      'message': message,
+                                                      'business_name':business_name})
 
 def yelp_search(request, search_type):
     #thing = test_yelp.get_test()

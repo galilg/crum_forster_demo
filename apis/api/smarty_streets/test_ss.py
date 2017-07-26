@@ -6,10 +6,10 @@ from SmartyStreets import SmartyStreets
 
 ss = SmartyStreets()
 
-location = {'address': '181 W 10 St, New York', 'state': 'NY'}
-responses = ss.suggest_address(location)
+location = {'street': '181 W 10 St', 'city':'New York', 'state': 'NY', 'zipcode':'10014'}
+
+responses = ss.check_address(location)
 
 import pprint
 
-for response in responses:
-    pprint.pprint(response.text)
+pprint.pprint(responses.delivery_line_1)

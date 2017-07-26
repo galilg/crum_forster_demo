@@ -39,6 +39,9 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
 </nav>
 
 
@@ -57,6 +60,9 @@
 
 {% if message %}
     <p><h2>{{ message }}<h2></p>
+{% endif %}
+{% if business_name %}
+    <p><h2><strong>{{ business_name }}</strong></h2></p>
 {% endif %}
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
