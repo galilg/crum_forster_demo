@@ -1,6 +1,9 @@
 from django import forms
 
 class NameForm(forms.Form):
-    your_name = forms.CharField(label='Your name', max_length=20)
-    address = forms.CharField()
-    did_send  = forms.BooleanField()
+    business_name = forms.CharField(label='Your name', max_length=35)
+    city = forms.CharField(label='City', max_length=35)
+    state = forms.CharField(label='State', max_length=2)
+
+class NumberFrom(forms.Form):
+    phone = forms.IntegerField(label='Phone')
