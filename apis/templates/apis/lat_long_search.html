@@ -41,10 +41,10 @@
 </nav>
 
 
-<form action='/apis/submit_phone' method='post' class='form'>
+<form action='/apis/submit_lat_long' method='post' class='form'>
     {% csrf_token %}
     <div class="col-lg-4">
-    {% bootstrap_form lat_long_form %}
+    {% bootstrap_form name_form %}
     {% buttons %}
       <button type="submit" class="btn btn-primary">
         {% bootstrap_icon "star" %} Submit

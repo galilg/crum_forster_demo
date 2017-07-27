@@ -54,5 +54,19 @@
 </form>
 
 {% if address_info %}
+    <ul class="list-group">
+    <li class="list-group-item"><strong>Delivery line:</strong> {{ address_info.delivery_line_1 }}</li>
+    <li class="list-group-item"><strong>Primary Number:</strong> {{ address_info.primary_number  }}</li>
+    <li class="list-group-item"><strong>Street Name:</strong> {{ address_info.street_name }}</li>
+    <li class="list-group-item"><strong>Street Suffix:</strong> {{ address_info.street_suffix }}</li>
+    <li class="list-group-item"><strong>City Name:</strong> {{ address_info.city_name }}</li>
+    <li class="list-group-item"><strong>State:</strong> {{ address_info.state_abbreviation }}</li>
+    <li class="list-group-item"><strong>Zip:</strong> {{ address_info.zipcode }}</li>
+    <li class="list-group-item"><strong>+4:</strong> {{ address_info.plus4_code }}</li>
+    <li class="list-group-item"><strong>Predirection:</strong> {{ address_info.street_predirection }}</li>
+    <li class="list-group-item"><strong>Postdirection:</strong> {{ address_info.street_postdirection }}</li>
+</ul>
     <p>{{ address_info.delivery_line_1 }}<p>
+{% else %}
+    <p><h1>Invalid Address</h1></p>
 {% endif %}

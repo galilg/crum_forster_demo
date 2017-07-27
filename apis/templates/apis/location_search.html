@@ -51,12 +51,12 @@
     {% endbuttons %}
 </form>
 
+{% if message %}
+    <p><h2>{{ message }}</h2></p>
+{% endif %}
+
+{% if business_name %}
+    <p><h2><strong>{{ business_name }}</strong></p></h2>
+{% endif %}
 <a class="btn btn-success" href="../yelp_search" role="button">Back to Search</a>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-  <div class="container">
-    <div class=navbar-right>
-    <h2>Galil Gertner</h2>
-    </div>
-  </div>
-</nav>
