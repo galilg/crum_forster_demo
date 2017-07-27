@@ -119,7 +119,15 @@ def submit_business_name(request):
         smarty_streets = SmartyStreets.SmartyStreets()
         smarty_streets_info = smarty_streets.check_address(location_smartystreets)
 
-        ss_street_address = smarty_streets_info.delivery_line_1
+        try:
+            ss_street_address = smarty_streets_info.delivery_line_1
+        except:
+
+            message = "This number doesn't have any yelp reviews, it was not added."
+            business_name = None
+            return render(request, 'apis/location_search.html', {'name_form': NameForm,
+                                                      'message': message,
+                                                      'business_name':name})
         print(ss_street_address)
 
         if (len(info['businesses']) > 0 and len(info['businesses']) > 2):
@@ -190,7 +198,10 @@ def submit_phone(request):
     input_text = int(input_text)
     lookup = Yelp.Yelp()
     info = lookup.search_phone(input_text)
-    business, populated = populate_database(info)
+    if (len(info['businesses']) > 0):
+        business, populated = populate_database(info)
+    else:
+        business = None
     if(business is not None):
         if(populated):
             message = "Success, this business has been added to the database."
@@ -203,7 +214,7 @@ def submit_phone(request):
 
     return render(request, 'apis/phone_search.html', {'num_form': NumberForm,
                                                       'message': message,
-                                                      'business_name':business_name})
+                                                      'business_name':business})
 
 def yelp_search(request, search_type):
     #thing = test_yelp.get_test()

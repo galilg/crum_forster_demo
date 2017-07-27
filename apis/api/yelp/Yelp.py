@@ -15,8 +15,8 @@ class Yelp(object):
     '''
 
     def __init__(self):
-        self.__CLIENT_ID = os.environ['YELP_CLIENT_ID']
-        self.__CLIENT_SECRET = os.environ['YELP_CLIENT_SECRET']
+        self.__CLIENT_ID = 'zNYZK6bm7n3P5FOWP5dAXg'#os.environ['YELP_CLIENT_ID']
+        self.__CLIENT_SECRET = 'rb8YrUHSIP1vpyjyWoz2dRCcicPmczNptcb3Yodo2Jy9JKJQa0lJf7nvzP6U6jxM' # os.environ['YELP_CLIENT_SECRET']
         self.__ACCESS_TOKEN = None
         self.__load_access_token()
         self.__headers = {'Authorization': 'bearer %s' % self.__ACCESS_TOKEN}

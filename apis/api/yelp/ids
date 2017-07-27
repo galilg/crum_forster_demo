@@ -1,0 +1,10 @@
+# Smarty Streets ENVIRON variables
+export SMARTY_AUTH_ID='4f8cb94d-54a4-8bca-509c-3d3ed49c0e8f'
+export SMARTY_AUTH_TOKEN='MV03aBV61mfupgSzc0bq'
+
+
+# Yelp ENVIRON variables
+export YELP_CLIENT_ID='zNYZK6bm7n3P5FOWP5dAXg'
+export YELP_CLIENT_SECRET='rb8YrUHSIP1vpyjyWoz2dRCcicPmczNptcb3Yodo2Jy9JKJQa0lJf7nvzP6U6jxM'
+
+

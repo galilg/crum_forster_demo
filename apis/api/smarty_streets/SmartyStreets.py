@@ -9,8 +9,8 @@ from smartystreets_python_sdk.us_autocomplete import Lookup as auto_lookup
 
 class SmartyStreets(object):
     def __init__(self):
-        self.__auth_id = os.environ['SMARTY_AUTH_ID']
-        self.__auth_token = os.environ['SMARTY_AUTH_TOKEN']
+        self.__auth_id = '4f8cb94d-54a4-8bca-509c-3d3ed49c0e8f' #os.environ['SMARTY_AUTH_ID']
+        self.__auth_token = 'MV03aBV61mfupgSzc0bq'#os.environ['SMARTY_AUTH_TOKEN']
         self.__credentials = StaticCredentials(self.__auth_id,
                                                self.__auth_token)
 

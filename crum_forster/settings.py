@@ -103,9 +103,14 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
+#STATIC_URL = https://docs.djangoproject.com/en/1.8/howto/static-files/
+#from unipath import Path
 
+#BASE_DIR = Path(__file__).ancestor(3)
+#STATIC_URL = BASE_DIR.child('static')
 STATIC_URL = '/static/'
+
+#STATIC_ROOT = /home/galil/src/crum_forster_demo/static
 
 
 # Bootstrap settings
